@@ -1,3 +1,8 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,7 +28,33 @@ namespace AgricultureProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IServiceService,ServiceManager>();
+            services.AddScoped<IServiceDal, EfServiceDal>();
+
+            services.AddScoped<ITeamService,TeamManager>();
+            services.AddScoped<ITeamDal,EfTeamDal>();
+
+            services.AddScoped<IContactService,ContactManager>();
+            services.AddScoped<IContactDal, EfContactDal>();
+
+            services.AddScoped<IAddressService,AddressManager>();
+            services.AddScoped<IAddressDal, EfAddressDal>();
+
+            services.AddScoped<IImageService,ImageManager>();
+            services.AddScoped<IImageDal, EfImageDal>();
+
+            services.AddScoped<INewsService,NewsManager>();
+            services.AddScoped<INewsDal,EfNewsDal>();
+
+
+
+
+
+
+            services.AddDbContext<AgricultureContext>();
             services.AddControllersWithViews();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

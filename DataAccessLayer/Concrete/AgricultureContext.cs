@@ -19,6 +19,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<Image> Images { get; set; }
         public DbSet<News> New { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Service> Services { get; set; }
 
     }
 }

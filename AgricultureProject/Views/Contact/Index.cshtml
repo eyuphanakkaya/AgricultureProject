@@ -1,0 +1,50 @@
+﻿@using EntityLayer.Concrete
+@model List<Contact>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">İletişim</h4>
+            @*<p class="card-description">
+            Takımımız <code>.table-bordered</code>*@
+            </p>
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>İsim</th>
+                            <th>Mail</th>
+                            <th>Mesaj</th>
+                            <th>Tarih</th>
+                            <th>Güncelle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ContactId</td>
+                                <td>@item.Name</td>
+                                <td>@item.Mail</td>
+                                <td>@item.Message</td>
+                                <td>@item.Date</td>
+                                <td><a href="/Contact/UpdateContact/@item.ContactId" class="btn btn-secondary">Güncelle</a></td>
+                                <td><a href="/Contact/DeleteContact/@item.ContactId" class="btn btn-danger">Sil</a></td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
